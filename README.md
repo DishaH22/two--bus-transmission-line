@@ -58,7 +58,41 @@ The system consists of:
 ![Direction View](Figures/two_bus_5_direction_view.png)
 
 **Graph result:** The direction of reactive power flow changes when the Bus 2 voltage becomes lower than the Bus 1 voltage.
+## Graph Analysis
 
+### Load (Real Power) vs Bus Voltage
+![MW vs Voltage](Figures/mw_vs_voltage.png)
+
+**Observation:**  
+As real power load increases from 0 MW to 1000 MW, the voltage at Bus 2 decreases steadily.  
+This occurs because higher real power demand increases current flow through the transmission line, causing larger voltage drops.
+
+---
+
+### Load (Real Power) vs Bus Angle
+![MW vs Angle](Figures/mw_vs_angle.png)
+
+**Observation:**  
+As real power load increases, the Bus 2 voltage angle becomes more negative.  
+This reflects the increasing phase angle difference required to transfer more real power through the transmission line.
+
+---
+
+### Load (Reactive Power) vs Bus Voltage
+![MVAR vs Voltage](Figures/mvar_vs_voltage.png)
+
+**Observation:**  
+Increasing reactive power demand causes a significant drop in Bus 2 voltage.  
+Reactive power has a strong effect on voltage magnitude in power systems.
+
+---
+
+### Load (Reactive Power) vs Bus Angle
+![MVAR vs Angle](Figures/mvar_vs_angle.png)
+
+**Observation:**  
+As reactive power load increases, the Bus 2 voltage angle gradually changes.  
+This reflects changes in reactive power flow and system voltage stability conditions.
 ## Key Results
 
 ### 1) No-load condition
