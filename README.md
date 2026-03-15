@@ -1,5 +1,10 @@
 # Two-Bus Transmission Line Power Flow Analysis
 
+
+This project analyzes real and reactive power flow in a two-bus transmission system using PowerWorld Simulator. 
+The study investigates how variations in load (MW and MVAR) affect bus voltage, voltage angle, power flow direction, and transmission line loading.
+
+
 ## Overview
 This project analyzes real and reactive power flow in a two-bus transmission system using PowerWorld Simulator.
 
@@ -9,7 +14,15 @@ The study investigates how changing load in MW and MVAR affects:
 - real power flow
 - reactive power flow
 - transmission line loading
+  
+## Key Engineering Skills Demonstrated
 
+- Power flow analysis in transmission networks
+- Load-flow simulation using PowerWorld Simulator
+- Analysis of real power (MW) and reactive power (MVAR) variation
+- Voltage magnitude and bus angle analysis
+- Transmission line loading and overload analysis
+- Interpretation of MW/MVAR impact on voltage stability
 ## Aim
 To study real power and reactive power flow in a one-line diagram of a two-bus system and observe how voltage magnitudes, bus angles, and power-flow direction change with MW and MVAR loading.
 
