@@ -1,198 +1,115 @@
-## Two-Bus Transmission Line Power Flow Analysis
+# Two-Bus Transmission Line Power Flow Analysis
 
----
 ## Overview
+This project analyzes real and reactive power flow in a two-bus transmission system using PowerWorld Simulator.
 
-This project analyzes real power (P) and reactive power (Q) flow in a two-bus transmission system using PowerWorld Simulator.
+The study investigates how changing load in MW and MVAR affects:
+- bus voltage magnitude
+- bus voltage angle
+- real power flow
+- reactive power flow
+- transmission line loading
 
-The study investigates how changes in load (MW and MVAR) affect:
+## Aim
+To study real power and reactive power flow in a one-line diagram of a two-bus system and observe how voltage magnitudes, bus angles, and power-flow direction change with MW and MVAR loading.
 
--Bus voltage magnitude
--Voltage angle difference
--Real power flow
--Reactive power flow
--Transmission line loading
+## System Description
+The system consists of:
+- **Bus 1**: slack bus / generator bus
+- **Bus 2**: load bus
+- one transmission line connecting both buses
 
-This simulation demonstrates basic power flow behavior in electrical transmission networks.
+## System Parameters
+- Nominal voltage at Bus 1 and Bus 2: **138 kV**
+- Generator rating: **1000 MW**
+- Base power: **500 MVA**
+- Load rating used in the base case: **500 MW**
+- Transmission line parameters:
+  - Resistance, **R = 0.02**
+  - Reactance, **X = 0.08**
+  - Shunt charging capacitance, **B = 0.8**
 
----
+## Software Used
+- PowerWorld Simulator
 
-## Objectives
+## Simulation Screenshots
 
-- Analyze real power flow between two buses
-- Study reactive power flow in a transmission line
-- Observe the effect of real power (MW) variation
-- Observe the effect of reactive power (MVAR) variation.
-- Understand how voltage magnitude and voltage angle change with load.
-- System Description
+### Two-Bus System Model
+![Two-Bus System](Figures/two_bus_1_system.png)
 
-The system used in this project consists of:
+**Graph result:** This figure shows the one-line two-bus transmission system used for the power-flow analysis.
 
-- Bus 1 – Slack Bus (Generator Bus)
-- Bus 2 – Load Bus
-- Transmission line connecting both buses
+### Power Flow at 500 MW
+![Power Flow at 500 MW](Figures/two_bus_2_power_flow_500MW.png)
 
----
+**Graph result:** At 500 MW load, real power flows from Bus 1 to Bus 2 and the line operates within normal loading range.
 
-## System parameters:
+### MW Variation View
+![MW Variation View](Figures/two_bus_3_mw_variation_100MW.png)
 
-Voltage Level: 138 kV
+**Graph result:** As MW load increases, line loading increases and the receiving-end voltage at Bus 2 decreases gradually.
 
-Base Power: 500 MVA
+### MVAR Variation View
+![MVAR Variation View](Figures/two_bus_4_mvar_variation_500MW_0MVAR.png)
 
-Software Used
+**Graph result:** As reactive power demand increases, Bus 2 voltage drops further, showing the effect of reactive loading on voltage regulation.
 
-PowerWorld Simulator
+### Direction of Real and Reactive Power Flow
+![Direction View](Figures/two_bus_5_direction_view.png)
 
-This software is commonly used for power system simulation and load flow analysis.
+**Graph result:** The direction of reactive power flow changes when the Bus 2 voltage becomes lower than the Bus 1 voltage.
 
-## Methodology
-**1. Create Two-Bus System**
-A simple two-bus network was created in PowerWorld.
-Bus 1 → Generator bus
-Bus 2 → Load bus
-One transmission line connects the buses.
+## Key Results
 
-**2. Change Base Power**
-The system base power was modified:
-100 MVA → 500 MVA
-After changing the base value, transmission line parameters updated automatically.
+### 1) No-load condition
+At **0 MW and 0 MVAR**, the voltage at **Bus 2** is higher than the voltage at **Bus 1**. This is the **Ferranti effect**, which occurs because of the inductance and capacitance of the transmission line.
 
-**3. Run Power Flow Simulation**
-- The simulator was run in Run Mode to observe:
-- Real power flow (MW)
-- Reactive power flow (MVAR)
-- Bus voltage magnitude
-- Bus voltage angle difference
-- Power flow arrows were enabled to visualize direction of power flow.
+### 2) Effect of increasing MW load
+When load is increased from **0 MW to 1000 MW** while keeping reactive load at **0 MVAR**:
+- real power flow increases
+- Bus 2 voltage decreases
+- reactive power flow decreases
+- Bus 2 per-unit voltage changes from about **1.03 p.u to 0.98 p.u**
 
----
+### 3) Effect of increasing MVAR load
+When reactive load is increased from **0 MVAR to 500 MVAR** while keeping real power at **500 MW**:
+- Bus 2 voltage decreases further
+- Bus 2 per-unit voltage changes from about **1.01 p.u to 0.92 p.u**
+- reactive power demand increases significantly
 
-## Experiment 1: Effect of Real Power (MW)
+### 4) Reactive power flow direction change
+At about **300 MVAR**, corresponding to:
+- **131.98 kV**
+- **-4.52 degrees**
+- about **0.95 p.u**
 
-**Load at Bus 2 was varied from:**
-0 MW → 1000 MW
-
-**Step size:**
-
-50 MW
-
-**Reactive load was kept constant:** 
-
-0 MVAR
-
----
-
-## Observations
-
-- Voltage magnitude decreased as load increased
-
-- Voltage angle difference increased
-
-- Real power flow increased
-
-- Reactive power flow decreased
-
-**Real power equation:**
-
-P = (Vs × Vr × sinδ) / X
-
-Therefore:
-
-Real Power ∝ Voltage Angle Difference
-
----
-
-## Experiment 2: Effect of Reactive Power (MVAR)
-
-Reactive load was varied:
-
-0 MVAR → 500 MVAR
-
-Step size:
-
-25 MVAR
-
-Real power remained constant:
-
-500 MW
-
----
-
-## Observations
-
-- Voltage magnitude decreased
-- Reactive power flow increased
-- Reactive power direction changed around 300 MVAR
-
-**Reactive power equation:**
-
-Q = Vr (Vs cosδ − Vr) / X
-
-Thus:
-
-Reactive Power ∝ Voltage Magnitude Difference
-
----
-
-## Key Phenomena Observed
-
-**Ferranti Effect**
-
-**At no-load condition:**
-
-Receiving End Voltage > Sending End Voltage
-
-This occurs due to line capacitance in long transmission lines.
-
-**Surge Impedance Loading (SIL)**
-
-At a specific loading level:
-
-Reactive power generated by capacitance
-
-Equals reactive power absorbed by inductance
-
-Result:
-
-Net Reactive Power ≈ 0
-The line operates at natural loading.
-
----
+the direction of reactive power flow changes because the receiving-end voltage becomes lower than the sending-end voltage.
 
 ## Transmission Line Loading Results
-Load (MW)	Line Loading
-750 MW	83%
-800 MW	88%
-850 MW	92%
-900 MW	97%
-950 MW	102%
-1000 MW	107%
 
-When loading exceeded 100%, the transmission line became overloaded.
+| Load (MW) | Bus 2 Voltage (kV) | Bus Angle at Bus 2 (deg) | Line Loading |
+|---|---:|---:|---:|
+| 750 | 137.08 | -7.40 | 83% |
+| 800 | 136.62 | -7.89 | 88% |
+| 850 | 136.14 | -8.38 | 92% |
+| 900 | 135.64 | -8.88 | 97% |
+| 950 | 135.13 | -9.39 | 102% |
+| 1000 | 134.61 | -9.90 | 107% |
 
----
+**Observation:** the line becomes overloaded above about **950 MW**.
 
-## Key Learning
+## Important Discussion
+- Real power flow mainly depends on the **voltage angle difference** between buses.
+- Reactive power flow mainly depends on the **difference in voltage magnitude** between buses.
+- At low or no load, the Ferranti effect causes the receiving-end voltage to rise.
+- At higher MW loading, line loading increases and Bus 2 voltage decreases.
+- At higher MVAR loading, the voltage drop becomes stronger and reactive power-flow direction can reverse.
 
-From this simulation:
+## Conclusion
+This project demonstrates the behavior of real and reactive power flow in a two-bus transmission line using PowerWorld Simulator. Increasing MW load mainly increases real power transfer and line loading, while increasing MVAR load causes a stronger voltage drop at Bus 2. The analysis also shows the Ferranti effect at no load and overload conditions at high MW loading.
 
-Real Power Flow ∝ Voltage Angle Difference
-Reactive Power Flow ∝ Voltage Magnitude Difference
-
-These are fundamental principles in power system operation and control.
-
----
-## Author
-
-Disha Harwalkar
-MSc Electrical & Electronics Engineering
-
----
-
-## Areas of Interest:
-
-- Power Systems
-- Renewable Energy
-- Smart Grids
+## Repository Contents
+- `README.md` – project documentation
+- `Figures/` – simulation screenshots
+- `FINAL PSA REPORT.docx` or project report file – detailed lab report
 - Power Electronics
