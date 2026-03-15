@@ -155,6 +155,17 @@ the direction of reactive power flow changes because the receiving-end voltage b
 ## Conclusion
 This project demonstrates the behavior of real and reactive power flow in a two-bus transmission line using PowerWorld Simulator. Increasing MW load mainly increases real power transfer and line loading, while increasing MVAR load causes a stronger voltage drop at Bus 2. The analysis also shows the Ferranti effect at no load and overload conditions at high MW loading.
 
+## Applications
+
+This analysis is relevant to:
+
+- Power system operation and planning
+- Transmission network design
+- Voltage stability analysis
+- Load flow studies in electrical grids
+- Smart grid and power system simulation
+
+  
 ## Repository Contents
 - `README.md` – project documentation
 - `Figures/` – simulation screenshots
